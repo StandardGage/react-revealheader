@@ -1,25 +1,44 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
-export default function RevealHeader({ children }: any) {
-  const scrollDirection = useScrollDirection();
+interface HeaderProps {
+  neutralColor: string | undefined;
+  upColor: string | undefined;
+  throttleAmount?: number;
+  children: any;
+}
+
+export default function RevealHeader(props: HeaderProps) {
+  const [childrenHeight, setChildrenHeight] = useState(0);
+  const scrollDirection = useScrollDirection(props.throttleAmount);
+  const childrenRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (childrenRef.current) {
+      setChildrenHeight(childrenRef.current.offsetHeight);
+    }
+  }, [childrenRef]);
+
   return (
-    <div
-      className={`bg-transparent max-w-full overflow-visible sticky z-40 -my-8 ${
-        scrollDirection === "down"
-          ? "lg:-top-24 sm:top-0 sm:dark:bg-neutral-900 sm:bg-white"
-          : scrollDirection === "up"
-          ? "top-0 dark:bg-neutral-900 bg-white"
-          : "bg-transparent top-0"
-      } h-24 transition-all duration-300`}
+    <div style={{
+      maxWidth: '100%',
+      overflow: 'visible',
+      position: 'sticky',
+      zIndex: 10,
+      top: scrollDirection === "down" ? `-${childrenHeight}px` : '0px',
+      transition: 'all 1s ease-in-out',
+      backgroundColor: scrollDirection === "up" ? `${props.upColor}` : `${props.neutralColor}`,
+      height: `${childrenHeight}px`,
+      transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)',
+      transitionDuration: '300ms'
+    }}
     >
-      <div className="p-5 font-bold">{children}</div>
+      <div ref={childrenRef}>{props.children}</div>
     </div>
   );
 }
 
-function useScrollDirection() {
+function useScrollDirection(throttleAmount:number = 25) {
   const [scrollDirection, setScrollDirection] = useState("neutral");
-
   useEffect(() => {
     let lastScrollY = window.pageYOffset;
 
@@ -36,7 +55,7 @@ function useScrollDirection() {
       lastScrollY = scrollY;
     };
 
-    const throttledUpdateScrollDirection = throttle(updateScrollDirection, 25); // Adjust the throttle duration as needed
+    const throttledUpdateScrollDirection = throttle(updateScrollDirection, throttleAmount); // Adjust the throttle duration as needed
 
     window.addEventListener("scroll", throttledUpdateScrollDirection);
     return () => {
