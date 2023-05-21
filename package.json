@@ -1,11 +1,20 @@
 {
   "name": "react-revealheader",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "description": "A React component that reveals a header on scroll",
   "license": "MIT",
   "author": "StandardGage",
+  "keywords": [
+    "react",
+    "react-component",
+    "react-header",
+    "react-revealheader",
+    "react-reveal-header",
+    "scroll",
+    "scroll-header",
+    "scroll-header-reveal"],
   "files": [
     "dist",
     "README.md"
