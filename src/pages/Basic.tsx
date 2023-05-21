@@ -1,6 +1,6 @@
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { dark, solarizedlight, oneDark } from 'react-syntax-highlighter/dist/cjs/styles/prism';
-import RevealHeader from '../lib/RevealHeader';
+import { oneDark } from 'react-syntax-highlighter/dist/cjs/styles/prism';
+
 
 const example1 = `
 <RevealHeader>
@@ -31,11 +31,6 @@ export default function Basic() {
             <SyntaxHighlighter language="tsx" style={oneDark}>
                 {example1}
             </SyntaxHighlighter>
-            <div className='w-52 h-52 overflow-scroll'>
-                <RevealHeader neutralColor='white' upColor='black'><div>hi</div></RevealHeader>
-                <div className='flex h-screen w-screen bg-slate-500 font-bold text-2xl text-white items-center justify-center'>Scroll down to see Header dissapear</div>
-                <div className='flex h-screen w-screen bg-slate-800 font-bold text-2xl text-white items-center justify-center'>Scroll up to see Header reappear</div>
-            </div>
         </div>
     )
 }
