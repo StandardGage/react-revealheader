@@ -9,7 +9,7 @@ function App() {
   return (
     <>
       <RevealHeader neutralColor={'white'} upColor={'#8694a8'}>
-        <div className='flex flex-col font-bold text-2xl p-4'>
+        <div className='flex flex-col flex-grow font-bold text-2xl p-4'>
           <Link to="/">React Reveal Header</Link>
           <Link to="/basic">Basic Usage</Link>
         </div>

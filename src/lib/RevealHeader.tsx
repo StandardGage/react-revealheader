@@ -1,15 +1,16 @@
-import { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef } from "react";
 
 interface HeaderProps {
   neutralColor: string | undefined;
   upColor: string | undefined;
   throttleAmount?: number;
   children: any;
+  parentRef?: React.RefObject<HTMLElement>;
 }
 
 export default function RevealHeader(props: HeaderProps) {
   const [childrenHeight, setChildrenHeight] = useState(0);
-  const scrollDirection = useScrollDirection(props.throttleAmount);
+  const scrollDirection = useScrollDirection(props.throttleAmount, props.parentRef);
   const childrenRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -37,14 +38,19 @@ export default function RevealHeader(props: HeaderProps) {
   );
 }
 
-function useScrollDirection(throttleAmount:number = 25) {
+function useScrollDirection(throttleAmount:number = 25, parentRef: React.RefObject<HTMLElement> | undefined) {
   const [scrollDirection, setScrollDirection] = useState("neutral");
   console.log(scrollY)
   useEffect(() => {
-    let lastScrollY = window.pageYOffset;
+    let lastScrollY = 0;
+    if (parentRef) {
+      lastScrollY = parentRef.current?.scrollTop || 0;
+    } else {
+      lastScrollY = window.pageYOffset;
+    }
 
     const updateScrollDirection = () => {
-      const scrollY = window.pageYOffset;
+      const scrollY = parentRef ? parentRef.current?.scrollTop || 0 : window.pageYOffset;
       const direction = scrollY > lastScrollY ? "down" : scrollY === lastScrollY ? "neutral" : "up";
       if (direction !== scrollDirection && scrollY !== 0) {
         setScrollDirection(direction);
@@ -57,11 +63,17 @@ function useScrollDirection(throttleAmount:number = 25) {
     };
 
     const throttledUpdateScrollDirection = throttle(updateScrollDirection, throttleAmount); // Adjust the throttle duration as needed
-
-    window.addEventListener("scroll", throttledUpdateScrollDirection);
-    return () => {
-      window.removeEventListener("scroll", throttledUpdateScrollDirection);
-    };
+    if (parentRef) {
+      parentRef.current?.addEventListener("scroll", throttledUpdateScrollDirection);
+      return () => {
+        parentRef.current?.removeEventListener("scroll", throttledUpdateScrollDirection);
+      };
+    } else {
+      window.addEventListener("scroll", throttledUpdateScrollDirection);
+      return () => {
+        window.removeEventListener("scroll", throttledUpdateScrollDirection);
+      };
+    }
   }, [scrollDirection]);
 
   return scrollDirection;
