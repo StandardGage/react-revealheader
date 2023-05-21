@@ -26,7 +26,7 @@ export default function RevealHeader(props: HeaderProps) {
       zIndex: 10,
       top: scrollDirection === "down" ? `-${childrenHeight}px` : '0px',
       transition: 'all 1s ease-in-out',
-      backgroundColor: scrollDirection === "up" ? `${props.upColor}` : `${props.neutralColor}`,
+      backgroundColor: scrollDirection === "up" ? `${props.upColor}` : scrollDirection === "neutral" ? `${props.neutralColor}` : `${props.upColor}`,
       height: `${childrenHeight}px`,
       transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)',
       transitionDuration: '300ms'
@@ -39,6 +39,7 @@ export default function RevealHeader(props: HeaderProps) {
 
 function useScrollDirection(throttleAmount:number = 25) {
   const [scrollDirection, setScrollDirection] = useState("neutral");
+  console.log(scrollY)
   useEffect(() => {
     let lastScrollY = window.pageYOffset;
 
@@ -48,7 +49,7 @@ function useScrollDirection(throttleAmount:number = 25) {
       if (direction !== scrollDirection && scrollY !== 0) {
         setScrollDirection(direction);
       }
-      if (scrollY <= 100) {
+      if (scrollY <= 50) {
         setScrollDirection("neutral")
       }
 

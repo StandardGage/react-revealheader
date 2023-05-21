@@ -5,9 +5,15 @@ function App() {
 
   return (
     <>
-      <RevealHeader neutralColor={'black'} upColor={'white'}><div className='outer'><div className='flex h-64 justify-center items-center'>hi</div></div></RevealHeader>
-      <div className='h-screen w-screen bg-red-800'>Hey</div>
-      <div className='h-screen w-screen bg-blue-800'>Hey</div>
+      <RevealHeader neutralColor={'white'} upColor={'gray'}>
+        <div className='font-bold text-2xl p-4'>
+          <div>React Reveal Header</div>
+
+        </div>
+      </RevealHeader>
+      <div className='flex h-screen w-screen bg-red-800 font-bold text-2xl text-white items-center justify-center'>Scroll down to see Header dissapear</div>
+      <div className='flex h-screen w-screen bg-blue-800 font-bold text-2xl text-white items-center justify-center'>Scroll up to see Header reappear</div>
+
     </>
   )
 }
