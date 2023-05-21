@@ -19,8 +19,8 @@
     "dist",
     "README.md"
   ],
-  "main": "./dist/react-revealheader.umd.js",
-  "module": "./dist/react-revealheader.es.js",
+  "main": "./dist/RevealHeader.js",
+  "module": "./dist/RevealHeader.d.ts",
   "exports": {
     ".": {
       "import": "./dist/react-revealheader.es.js",

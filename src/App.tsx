@@ -1,5 +1,5 @@
 import './App.css'
-import RevealHeader from './lib/RevealHeader'
+import RevealHeader from './RevealHeader'
 import Advanced from './pages/Advanced';
 import Basic from './pages/Basic';
 
