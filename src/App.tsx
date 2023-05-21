@@ -1,23 +1,23 @@
 import './App.css'
 import RevealHeader from './lib/RevealHeader'
-import { Link, Route, Routes } from 'react-router-dom';
-import Landing from './pages/Landing';
+import Advanced from './pages/Advanced';
 import Basic from './pages/Basic';
 
 function App() {
 
   return (
     <>
-      <RevealHeader neutralColor={'white'} upColor={'#8694a8'}>
+      <RevealHeader>
         <div className='flex flex-col flex-grow font-bold text-2xl p-4'>
-          <Link to="/">React Reveal Header</Link>
-          <Link to="/basic">Basic Usage</Link>
+          <div><a href='#'>React Reveal Header</a></div>
+          <div className='flex justify-center space-x-5'>
+            <div><a href='#basics'>Basics</a></div>
+            <div><a href='#advanced'>Advanced</a></div>
+          </div>
         </div>
       </RevealHeader>
-      <Routes>
-            <Route path='/' element={<Landing/>} />
-            <Route path='/basic' element={<Basic/>} />
-      </Routes>
+      <Basic/>
+      <Advanced/>
     </>
   )
 }

@@ -1,16 +1,21 @@
 import React, { useEffect, useState, useRef } from "react";
 
 interface HeaderProps {
-  neutralColor: string | undefined;
-  upColor: string | undefined;
+  neutralColor?: string;
+  upColor?: string;
   throttleAmount?: number;
   children: any;
   parentRef?: React.RefObject<HTMLElement>;
 }
 
-export default function RevealHeader(props: HeaderProps) {
+export default function RevealHeader({
+  neutralColor = 'white',
+  upColor = 'white',
+  throttleAmount,
+  children = <div>React Reveal-Header</div>,
+  parentRef}: HeaderProps) {
   const [childrenHeight, setChildrenHeight] = useState(0);
-  const scrollDirection = useScrollDirection(props.throttleAmount, props.parentRef);
+  const scrollDirection = useScrollDirection(throttleAmount, parentRef);
   const childrenRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -27,13 +32,13 @@ export default function RevealHeader(props: HeaderProps) {
       zIndex: 10,
       top: scrollDirection === "down" ? `-${childrenHeight}px` : '0px',
       transition: 'all 1s ease-in-out',
-      backgroundColor: scrollDirection === "up" ? `${props.upColor}` : scrollDirection === "neutral" ? `${props.neutralColor}` : `${props.upColor}`,
+      backgroundColor: scrollDirection === "up" ? `${upColor}` : scrollDirection === "neutral" ? `${neutralColor}` : `${upColor}`,
       height: `${childrenHeight}px`,
       transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)',
       transitionDuration: '300ms'
     }}
     >
-      <div ref={childrenRef}>{props.children}</div>
+      <div ref={childrenRef}>{children}</div>
     </div>
   );
 }

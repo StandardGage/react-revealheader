@@ -16,7 +16,7 @@ const example1 = `
 
 export default function Basic() {
     return (
-        <div className="p-10 h-screen w-screen bg-slate-500">
+        <div id='basics' className="p-10 w-screen bg-slate-500">
             <h1>Basic Usage of React-RevealHeader</h1>
             <p> The <b>React-RevealHeader</b> component provides a simple and intuitive way to include a responsive header
                 in your application that disappears when scrolling down and reappears when scrolling up.
