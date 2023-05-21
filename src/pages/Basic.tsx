@@ -31,6 +31,40 @@ export default function Basic() {
             <SyntaxHighlighter language="tsx" style={oneDark}>
                 {example1}
             </SyntaxHighlighter>
+            <h2>Styling</h2>
+            <p>By default, the <b>RevealHeader</b> component will use the following styles:</p>
+            <table>
+                <tr>
+                    <th>Prop</th>
+                    <th>Default Value</th>
+                    <th>Description</th>
+                </tr>
+                <tr>
+                    <td>neutralColor</td>
+                    <td>'white'</td>
+                    <td>The color of the header when it sits at the top of the page.</td>
+                </tr>
+                <tr>
+                    <td>upColor</td>
+                    <td>'white'</td>
+                    <td>The color of the header when the user scrolls up.</td>
+                </tr>
+                <tr>
+                    <td>throttleAmount</td>
+                    <td>50</td>
+                    <td>The amount of time (in milliseconds) to wait before updating the header's visibility.</td>
+                </tr>
+                <tr>
+                    <td>parentRef</td>
+                    <td>null</td>
+                    <td>A reference to the parent element of the header. If not provided, the header will use the window as its parent.</td>
+                </tr>
+                <tr>
+                    <td>children</td>
+                    <td>{`<div>React Reveal-Header</div>`}</td>
+                    <td>The children of the header. This is where you should put your navigation bar, logo, etc...</td>
+                </tr>
+            </table>
         </div>
     )
 }
