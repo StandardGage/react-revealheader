@@ -19,12 +19,13 @@
     "dist",
     "README.md"
   ],
-  "main": "./dist/RevealHeader.js",
-  "module": "./dist/RevealHeader.d.ts",
+  "main": "./dist/react-revealheader.js",
+  "module": "./dist/react-reavealheader.umd.cjs",
+  "types": "./dist/react-revealheader.d.ts",
   "exports": {
     ".": {
-      "import": "./dist/react-revealheader.es.js",
-      "require": "./dist/react-revealheader.umd.js"
+      "import": "./dist/react-revealheader.js",
+      "require": "./dist/react-revealheader.umd.cjs"
     }
   },
   "scripts": {
