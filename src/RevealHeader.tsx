@@ -1,10 +1,10 @@
-import React, { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef } from "react";
 
-interface HeaderProps {
+export interface HeaderProps {
   neutralColor?: string;
   upColor?: string;
   throttleAmount?: number;
-  children: any;
+  children?: any;
   parentRef?: React.RefObject<HTMLElement>;
 }
 

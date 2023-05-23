@@ -1,4 +1,3 @@
-import React from 'react';
 import './App.css'
 import RevealHeader from './RevealHeader'
 import Advanced from './pages/Advanced';

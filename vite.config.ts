@@ -1,12 +1,17 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react-swc'
+import dts from 'vite-plugin-dts'
+import path from 'path'
 
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react(), dts()],
   build: {
+    outDir: 'dist',
+    
     lib: {
-      entry: 'src/RevealHeader.tsx',
-      name: 'RevealHeader'
+      entry: "src/RevealHeader.tsx",
+      name: 'RevealHeader',
+      fileName: (format) => `react-revealheader.${format}.js`
     },
     rollupOptions: {
       // make sure to externalize deps that shouldn't be bundled
