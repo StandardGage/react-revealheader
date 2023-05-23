@@ -1,6 +1,6 @@
 {
   "name": "react-revealheader",
-  "private": true,
+  "private": false,
   "version": "1.1.0",
   "type": "module",
   "description": "A React component that reveals a header on scroll",
