@@ -50,6 +50,7 @@ table {
 }
 
 td, th {
+  color: black;
   border-left: 2px solid #282c34;
   border-top: 2px solid #282c34;
   padding: 8px;

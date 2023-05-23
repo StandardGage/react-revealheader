@@ -1,3 +1,4 @@
+import React from 'react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { oneDark } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 
@@ -51,8 +52,8 @@ export default function Basic() {
                 </tr>
                 <tr>
                     <td>throttleAmount</td>
-                    <td>50</td>
-                    <td>The amount of time (in milliseconds) to wait before updating the header's visibility.</td>
+                    <td>25</td>
+                    <td>The amount of time (in milliseconds) to wait before updating the header's visibility. Used to help with performance.</td>
                 </tr>
                 <tr>
                     <td>parentRef</td>
