@@ -20,15 +20,8 @@
     "dist",
     "README.md"
   ],
-  "main": "./dist/react-revealheader.js",
-  "module": "./dist/react-reavealheader.umd.cjs",
+  "browser": "./dist/react-revealheader.es.js",
   "types": "./dist/RevealHeader.d.ts",
-  "exports": {
-    ".": {
-      "import": "./dist/react-revealheader.js",
-      "require": "./dist/react-revealheader.umd.cjs"
-    }
-  },
   "scripts": {
     "dev": "vite",
     "build": "tsc --emitDeclarationOnly --project tsconfig.json && vite build",
@@ -37,6 +30,18 @@
     "coverage": "vitest run --coverage",
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   },
   "devDependencies": {
     "@types/node": "^20.2.1",
