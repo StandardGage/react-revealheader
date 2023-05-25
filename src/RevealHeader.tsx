@@ -25,17 +25,9 @@ export default function RevealHeader({
   }, [childrenRef]);
 
   return (
-    <div style={{
-      maxWidth: '100%',
-      overflow: 'visible',
-      position: 'sticky',
-      zIndex: 10,
-      top: scrollDirection === "down" ? `-${childrenHeight}px` : '0px',
-      transition: 'all 1s ease-in-out',
-      backgroundColor: scrollDirection === "up" ? `${upColor}` : scrollDirection === "neutral" ? `${neutralColor}` : `${upColor}`,
-      height: `${childrenHeight}px`,
-      transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)',
-      transitionDuration: '300ms'
+    <div className={`max-w-full overflow-visible sticky z-10 ${scrollDirection === "up" ? `${upColor}` : scrollDirection === "neutral" ? `${neutralColor}` : `${upColor}`} transition-all duration-300`}
+    style={{top: `${scrollDirection === "down" ? `-${childrenHeight}px` : '0px'}`,
+      backgroundColor: `${scrollDirection === "up" ? `${upColor}` : scrollDirection === "neutral" ? `${neutralColor}` : `${upColor}`}`
     }}
     >
       <div ref={childrenRef}>{children}</div>
