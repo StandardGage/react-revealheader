@@ -45,7 +45,6 @@ export default function RevealHeader({
 
 function useScrollDirection(throttleAmount:number = 25, parentRef: React.RefObject<HTMLElement> | undefined) {
   const [scrollDirection, setScrollDirection] = useState("neutral");
-  console.log(scrollY)
   useEffect(() => {
     let lastScrollY = 0;
     if (parentRef) {
