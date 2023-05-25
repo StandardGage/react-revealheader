@@ -72,3 +72,9 @@ The **RevealHeader** component accepts the following props:
 </Routes>
 ```
 ### [Router Example](https://codesandbox.io/s/router-example-ur7tvy?file=/src/App.js)
+
+
+## Example with tailwindcss
+```jsx
+<RevealHeader neutralColor="bg-neutral-500" upColor="bg-neutral-500 hover:bg-slate-500">
+</RevealHeader>
