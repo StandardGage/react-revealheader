@@ -1,7 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 
 export interface HeaderProps {
-  className?: string;
   neutralColor?: string;
   upColor?: string;
   throttleAmount?: number;
@@ -10,7 +9,6 @@ export interface HeaderProps {
 }
 
 export default function RevealHeader({
-  className = '',
   neutralColor = 'white',
   upColor = 'white',
   throttleAmount,
@@ -27,9 +25,14 @@ export default function RevealHeader({
   }, [childrenRef]);
 
   return (
-    <div className={`max-w-full overflow-visible sticky z-10 ${scrollDirection === "up" ? `${upColor}` : scrollDirection === "neutral" ? `${neutralColor}` : `${upColor}`} transition-all duration-300 ${className}`}
+    <div className={`max-w-full overflow-visible sticky z-10 ${scrollDirection === "up" ? `${upColor}` : scrollDirection === "neutral" ? `${neutralColor}` : `${upColor}`} transition-all duration-300`}
     style={{top: `${scrollDirection === "down" ? `-${childrenHeight}px` : '0px'}`,
-      backgroundColor: `${scrollDirection === "up" ? `${upColor}` : scrollDirection === "neutral" ? `${neutralColor}` : `${upColor}`}`
+      backgroundColor: `${scrollDirection === "up" ? `${upColor}` : scrollDirection === "neutral" ? `${neutralColor}` : `${upColor}`}`,
+      maxWidth: '100%',
+      overflow: 'visible',
+      position: 'sticky',
+      zIndex: 10,
+      transition: 'all 300ms ease-in-out',
     }}
     >
       <div ref={childrenRef}>{children}</div>
