@@ -78,3 +78,5 @@ The **RevealHeader** component accepts the following props:
 ```jsx
 <RevealHeader neutralColor="bg-neutral-500" upColor="bg-neutral-500 hover:bg-slate-500">
 </RevealHeader>
+```
+### [Tailwind Example](https://standardgage.github.io/portfolio/)
