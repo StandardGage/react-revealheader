@@ -20,6 +20,7 @@
     "dist",
     "README.md"
   ],
+  "main": "./dist/react-revealheader.es.js",
   "browser": "./dist/react-revealheader.es.js",
   "types": "./dist/RevealHeader.d.ts",
   "scripts": {
