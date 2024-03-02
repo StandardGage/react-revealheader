@@ -8,16 +8,16 @@ The component is meant to prioritize customizability and versatility for your pr
 ## Installation
 Install the package with npm:
 ```bash
-npm install react-reveal-header
+npm install react-revealheader
 ```
 or with yarn:
 ```bash
-yarn add react-reveal-header
+yarn add react-revealheader
 ```
 
 Next, import the component into your React app:
 ```jsx
-import RevealHeader from 'react-reveal-header';
+import RevealHeader from 'react-revealheader';
 ```
 
 Now, you can use the **RevealHeader** component in your React app. For instance, here's how you might create a simple navigation bar:
